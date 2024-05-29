@@ -380,6 +380,36 @@ const pathFromCommands = ({
         })
         .join(' ');
     },
+    renderToCanvas(ctx) {
+      ctx.beginPath();
+      this.toInstructions().forEach((instr) => {
+        switch (instr.command) {
+          case 'moveTo': {
+            ctx.moveTo(instr.x, instr.y);
+            break;
+          }
+          case 'lineTo': {
+            ctx.lineTo(instr.x, instr.y);
+            break;
+          }
+          case 'curveTo': {
+            ctx.bezierCurveTo(
+              instr.x1,
+              instr.y1,
+              instr.x2,
+              instr.y2,
+              instr.x3,
+              instr.y3,
+            );
+            break;
+          }
+          case 'close': {
+            ctx.closePath();
+            break;
+          }
+        }
+      });
+    },
   };
 };
 

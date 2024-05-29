@@ -141,4 +141,5 @@ export type TPath = {
   transform: (...matrices: Array<TTransformMatrix>) => TPath;
   toInstructions: () => Array<TPathCommand>;
   toSVG: () => string;
+  renderToCanvas: (ctx: CanvasRenderingContext2D) => void;
 };

@@ -6,17 +6,28 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "license": "MIT",
+  "files": [
+    "dist/**/**",
+    "!**/*.test.*",
+    "!**/*.json",
+    "!**/*.tsbuildinfo",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "npm run clean && rollup -c",
+    "changeset": "changeset",
     "clean": "rimraf dist",
     "format": "prettier . --check",
     "format:fix": "prettier . --write",
+    "prepare": "npm run format:fix && npm run build && changeset version",
     "test": "vitest",
     "typecheck": "tsc --noEmit"
   },
   "keywords": [],
   "author": "Lucas Dino Nolte <hello@lucas-nolte.com>",
   "devDependencies": {
+    "@changesets/cli": "^2.27.5",
     "@rollup/plugin-typescript": "^11.1.6",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.7",
