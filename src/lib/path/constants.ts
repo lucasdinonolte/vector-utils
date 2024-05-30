@@ -2,6 +2,8 @@
  *  Legendre-Gauss abscissae with n=24 (x_i values, defined at i=n as
  *  the roots of the nth order Legendre polynomial Pn(x))
  */
+
+/* eslint-disable @typescript-eslint/no-loss-of-precision */
 export const T_VALUES = [
   -0.0640568928626056260850430826247450385909,
   0.0640568928626056260850430826247450385909,

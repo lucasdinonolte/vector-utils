@@ -1,3 +1,4 @@
+/* eslint-disable */
 //@ts-nocheck
 //TODO: TYPE THIS
 import { moveTo, lineTo, curveTo, close } from './commands';

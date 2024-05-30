@@ -58,17 +58,12 @@ const computePointOnCurve = (t: number, points: Array<TPoint>): TPoint => {
     return createPoint(x, y);
   }
 
-  let mt2 = mt * mt,
-    t2 = t * t,
-    a,
-    b,
-    c,
-    d = 0;
-
-  a = mt2 * mt;
-  b = mt2 * t * 3;
-  c = mt * t2 * 3;
-  d = t * t2;
+  const mt2 = mt * mt;
+  const t2 = t * t;
+  const a = mt2 * mt;
+  const b = mt2 * t * 3;
+  const c = mt * t2 * 3;
+  const d = t * t2;
 
   x = a * points[0]!.x + b * points[1]!.x + c * points[2]!.x + d * points[3]!.x;
   y = a * points[0]!.y + b * points[1]!.y + c * points[2]!.y + d * points[3]!.y;
@@ -185,8 +180,8 @@ export const createCurve = (anchor1: TAnchor, anchor2: TAnchor): TCurve => {
       return kr.radius;
     },
     length() {
-      let z = 0.5,
-        sum = 0,
+      const z = 0.5;
+      let sum = 0,
         t = 0;
 
       for (let i = 0; i < T_VALUES.length; i++) {

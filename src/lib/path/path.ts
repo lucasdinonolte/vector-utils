@@ -218,8 +218,8 @@ const bezierPathAt = (t: number, path: TPath): TBezierLocation => {
 
   const offset = (path.__cache.length ?? 0) * t;
 
-  let c = path.__cache.bezierPaths!,
-    l = 0;
+  const c = path.__cache.bezierPaths!;
+  let l = 0;
 
   for (let i = 0; i < c.length; i++) {
     const start = l,
@@ -244,9 +244,9 @@ const bezierPathAt = (t: number, path: TPath): TBezierLocation => {
 const locationAt = (_t: number, path: TPath): TCurveLocation => {
   const { bezierPath, t }: TBezierLocation = bezierPathAt(_t, path);
 
-  let offset = bezierPath.length * t,
-    c = bezierPath.curves,
-    l = 0;
+  const offset = bezierPath.length * t;
+  const c = bezierPath.curves;
+  let l = 0;
 
   for (let i = 0; i < c.length; i++) {
     const start = l,
