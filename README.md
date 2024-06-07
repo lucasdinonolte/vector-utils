@@ -10,7 +10,7 @@ npm install @lucasdinonolte/vector-utils
 ```
 
 ## Usage
-```
+```javascript
 import { createPath } from '@lucasdinonolte/vector-utils';
 
 // Parse SVG path
