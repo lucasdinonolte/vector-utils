@@ -4,6 +4,40 @@ import { moveTo, lineTo, curveTo, close } from './commands';
 import { createPath } from './path';
 
 /**
+ * Creates a line from the specified starting coordinates to the ending coordinates.
+ *
+ * @example
+ * // Example of how to use the line function:
+ * const myLinePath = line({ x1: 10, y1: 10, x2: 50, y2: 30 });
+ */
+export const line = ({
+  x1,
+  y1,
+  x2,
+  y2,
+  divisions = 1,
+}: {
+  x1: number;
+  y1: number;
+  x2: number;
+  y2: number;
+  divisions?: number;
+}): TPath => {
+  if (divisions < 1)
+    throw new Error('Divisions must be greater than or equal to 1');
+
+  const xStep = (x2 - x1) / divisions;
+  const yStep = (y2 - y1) / divisions;
+
+  const commands = Array.from({ length: divisions + 1 }, (_, i) => {
+    const cmd = i === 0 ? moveTo : lineTo;
+    return cmd(x1 + i * xStep, y1 + i * yStep);
+  });
+
+  return createPath(commands);
+};
+
+/**
  * Creates a rectangular path starting from the specified coordinates with the given width and height.
  *
  * @example
