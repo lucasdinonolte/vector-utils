@@ -137,18 +137,20 @@ export const ellipse = ({
   cy,
   rx,
   ry,
+  curvature = KAPPA,
 }: {
   cx: number;
   cy: number;
   rx: number;
   ry: number;
+  curvature?: number;
 }): TPath => {
   return createPath([
     moveTo(cx + rx, cy),
-    curveTo(cx + rx, cy - ry * KAPPA, cx + rx * KAPPA, cy - ry, cx, cy - ry),
-    curveTo(cx - rx * KAPPA, cy - ry, cx - rx, cy - ry * KAPPA, cx - rx, cy),
-    curveTo(cx - rx, cy + ry * KAPPA, cx - rx * KAPPA, cy + ry, cx, cy + ry),
-    curveTo(cx + rx * KAPPA, cy + ry, cx + rx, cy + ry * KAPPA, cx + rx, cy),
+    curveTo(cx + rx, cy - ry * curvature, cx + rx * curvature, cy - ry, cx, cy - ry),
+    curveTo(cx - rx * curvature, cy - ry, cx - rx, cy - ry * curvature, cx - rx, cy),
+    curveTo(cx - rx, cy + ry * curvature, cx - rx * curvature, cy + ry, cx, cy + ry),
+    curveTo(cx + rx * curvature, cy + ry, cx + rx, cy + ry * curvature, cx + rx, cy),
     close(),
   ]);
 };

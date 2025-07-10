@@ -1,4 +1,4 @@
-export { moveTo, lineTo, curveTo, close } from './commands';
+export { moveTo, lineTo, curveTo, curveWithCurvature, close } from './commands';
 export { createPath } from './path';
 export {
   line,
