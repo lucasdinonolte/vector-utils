@@ -1,0 +1,26 @@
+name: Changesets
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    name: Require changeset entry
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check for changeset
+        run: npm run changeset:check
