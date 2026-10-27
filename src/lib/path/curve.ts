@@ -58,6 +58,18 @@ const computePointOnCurve = (t: number, points: Array<TPoint>): TPoint => {
     return createPoint(x, y);
   }
 
+  if (degree === 2) {
+    const mt2 = mt * mt;
+    const a = mt2,
+      b = mt * t * 2,
+      c = t * t;
+
+    x = a * points[0]!.x + b * points[1]!.x + c * points[2]!.x;
+    y = a * points[0]!.y + b * points[1]!.y + c * points[2]!.y;
+
+    return createPoint(x, y);
+  }
+
   const mt2 = mt * mt;
   const t2 = t * t;
   const a = mt2 * mt;
