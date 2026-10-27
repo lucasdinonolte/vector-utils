@@ -1,0 +1,3 @@
+# Normalize all SVG path data to moveTo/lineTo/curveTo/close
+
+`createPath` always parses, absolutizes, and normalizes SVG path strings before storing them as Path Commands, so a `TPath` only ever has to understand four command types. Quadratic curves (`Q`/`T`) are promoted to cubic, and elliptical arcs (`A`) are approximated with cubic Bezier curves — so round-tripping a string through `createPath(d).toSVG()` can turn `Q`/`A` commands into `C` commands rather than preserving them exactly. This was chosen so every other module (anchors, curves, transforms, sampling) only has to deal with a single curve representation, at the cost of exact fidelity to the original path data.
