@@ -27,3 +27,4 @@ const outputPath = transformedPath.toSVG();
 ## Note 🚨🚨🚨
 Vector-Utils is a work in progress and should not be used for production purposes. Feel free to explore and contribute to its development.
 
+
