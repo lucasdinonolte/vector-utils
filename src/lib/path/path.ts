@@ -66,6 +66,11 @@ const computePathCurvesAndMutate = (path: TPath) => {
     }
   });
 
+  // Push any potentially trailing non-closed subpath
+  if (lastIdx < path.commands.length) {
+    subpaths.push(path.commands.slice(lastIdx));
+  }
+
   const bezierPaths: Array<TBezierPath> = subpaths.map((commands) => {
     let closed = false;
 
