@@ -17,6 +17,7 @@
   "scripts": {
     "build": "npm run clean && rollup -c",
     "changeset": "changeset",
+    "changeset:check": "changeset status --since=origin/main",
     "clean": "rimraf dist",
     "format": "prettier . --check",
     "format:fix": "prettier . --write",
